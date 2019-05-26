@@ -1,0 +1,21 @@
+{
+  "name": "yobot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bot",
+    "microsoft"
+  ],
+  "author": "jingchuan <xizihuayuan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/restify": "^7.2.10",
+    "botbuilder": "^4.4.0",
+    "restify": "^8.3.2",
+    "typescript": "^3.4.5"
+  }
+}
