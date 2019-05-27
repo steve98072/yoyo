@@ -504,5 +504,7 @@ MigrationBackup/
 dist/
 transcripts/*.transcript
 luis/*.json
+.luisrc
+.qnamakerrc
 
 # End of https://www.gitignore.io/api/node,linux,macos,windows,visualstudio
