@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<conference name="edui2018" start-date="2018-10-08" end-date="2018-10-10">
-    <day date="2018-10-08">
+<conference name="edui2018" start-date="2019-05-15" end-date="2019-05-31">
+    <day date="2019-05-15">
         <event type="Keynote" start-time="09:00 am" end-time="10:00 am">
             <location>Jefferson Theater</location>
             <speakers>Margot Lee Shetterly and Erin White</speakers>
@@ -172,7 +172,7 @@ You&amp;#8217;ll leave the workshop with the slide deck, a guide to conducting d
             <photos></photos>
         </event>
     </day>
-    <day date="2018-10-09">
+    <day date="2019-05-30">
         <event type="Talk" start-time="09:00 am" end-time="10:00 am">
             <location></location>
             <speakers>Whitney Quesenbery</speakers>
@@ -480,7 +480,7 @@ Josh Boyer will show how his team at North Carolina State University (NCSU) Libr
             <photos></photos>
         </event>
     </day>
-    <day date="2018-10-10">
+    <day date="2019-05-29">
         <event type="Panel" start-time="09:00 am" end-time="10:00 am">
             <location></location>
             <speakers>Emily Patterson and Melanie Seibert and Shayna Diamond</speakers>

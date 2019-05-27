@@ -22,6 +22,7 @@
     "botframework-config": "^4.4.0",
     "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.0.0",
+    "moment": "^2.24.0",
     "restify": "^8.3.2",
     "typescript": "^3.4.5"
   }

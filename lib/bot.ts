@@ -11,8 +11,9 @@ import {
   WaterfallStepContext,
   PromptOptions
 } from "botbuilder-dialogs";
-import { saveRef, subscribe } from "./proactive";
+import { saveRef, subscribe, getRef } from "./proactive";
 import { BlobStorage } from "botbuilder-azure";
+import { Context } from "vm";
 
 export class ConfBot {
   private _qnaMaker: QnAMaker;
@@ -47,32 +48,44 @@ export class ConfBot {
     await dc.continueDialog();
     if (context.activity.text !== null && context.activity.text === "help") {
       await dc.beginDialog("help");
-    }
-    if (context.activity.type === "message") {
+    } else if (context.activity.type === "message") {
       const userId: string = await saveRef(
         TurnContext.getConversationReference(context.activity),
         this._storage
       );
       await subscribe(userId, this._storage, this._adapter, this._savedSession);
-      const qnaResults = await this._qnaMaker.generateAnswer(
-        context.activity.text
-      );
-      if (qnaResults.length > 0) {
-        await context.sendActivity(qnaResults[0].answer);
+      if (context.activity.text.indexOf("SAVE:") !== -1) {
+        const title: string = context.activity.text.replace("SAVE:", "");
+        if (this._savedSession.indexOf(title) === -1) {
+          this._savedSession.push(title);
+        }
+        const ref = await getRef(userId, this._storage, this._savedSession);
+        ref["speakersessions"] = JSON.stringify(this._savedSession);
+        await saveRef(ref, this._storage);
+        await context.sendActivity(
+          `You've save ${title} to your speaker session list.`
+        );
       } else {
-        await this._luis.recognize(context).then(res => {
-          const top = LuisRecognizer.topIntent(res);
-          const data: SpeakerSession[] = getData(res.entities);
-          if (top === "Time") {
-            dc.beginDialog("time", data);
-          } else if (data.length > 1) {
-            context.sendActivity(createCarousel(data, top));
-          } else if (data.length === 1) {
-            context.sendActivity({
-              attachments: [createHeroCard(data[0], top)]
-            });
-          }
-        });
+        const qnaResults = await this._qnaMaker.generateAnswer(
+          context.activity.text
+        );
+        if (qnaResults.length > 0) {
+          await context.sendActivity(qnaResults[0].answer);
+        } else {
+          await this._luis.recognize(context).then(res => {
+            const top = LuisRecognizer.topIntent(res);
+            const data: SpeakerSession[] = getData(res.entities);
+            if (top === "Time") {
+              dc.beginDialog("time", data);
+            } else if (data.length > 1) {
+              context.sendActivity(createCarousel(data, top));
+            } else if (data.length === 1) {
+              context.sendActivity({
+                attachments: [createHeroCard(data[0], top)]
+              });
+            }
+          });
+        }
       }
     } else {
       await context.sendActivity(`${context.activity.type} event detected`);
