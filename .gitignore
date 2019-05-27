@@ -502,5 +502,7 @@ MigrationBackup/
 
 # ignore dist file as it will be compiled by typescript
 dist/
+transcripts/*.transcript
+luis/*.json
 
 # End of https://www.gitignore.io/api/node,linux,macos,windows,visualstudio

@@ -1,0 +1,21 @@
+user=Michael
+bot=edUi Conference
+
+user: help
+bot: [Suggestions=I want to know about a topic|I want to know about a speaker|I want to know about a venue]
+
+user: I want to know about a topic
+bot: You can ask:
+* _Who is speaking about bots?_
+* _Where is the Bot Framework talk?_
+* _What time is the Bot Framework talk?_user=jingchuan
+bot=edUi Conference
+
+user: help
+bot: [Suggestions=I want to know about a topic | I want to know about a speaker | I want to know about a venue]
+
+user: I want to know about a topic
+bot: You can ask:
+* _who is speaking about bots?_
+* _Where is the Bot Framework to download?_
+* _What time is the is?_
