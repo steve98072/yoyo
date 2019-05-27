@@ -1,6 +1,10 @@
 import { BotFrameworkAdapter } from "botbuilder";
-import { QnAMaker } from "botbuilder-ai";
-import { IQnAService, BotConfiguration } from "botframework-config";
+import { QnAMaker, LuisRecognizer } from "botbuilder-ai";
+import {
+  IQnAService,
+  ILuisService,
+  BotConfiguration
+} from "botframework-config";
 import * as restify from "restify";
 import { ConfBot } from "./bot";
 import { config } from "dotenv";
@@ -29,7 +33,18 @@ const qnaMaker = new QnAMaker({
   host: (<IQnAService>botConfig.findServiceByNameOrId("qna")).hostname
 });
 
-const echo: ConfBot = new ConfBot(qnaMaker);
+const luis = new LuisRecognizer({
+  applicationId: (<ILuisService>(
+    botConfig.findServiceByNameOrId("edui2018-test")
+  )).appId,
+  endpointKey: (<ILuisService>botConfig.findServiceByNameOrId("edui2018-test"))
+    .subscriptionKey,
+  endpoint: (<ILuisService>(
+    botConfig.findServiceByNameOrId("edui2018-test")
+  )).getEndpoint()
+});
+
+const echo: ConfBot = new ConfBot(qnaMaker, luis);
 
 server.post("/api/messages", (req, res) => {
   adapter.processActivity(req, res, async context => {

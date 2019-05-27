@@ -13,10 +13,12 @@
   "author": "jingchuan <xizihuayuan@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/cheerio": "^0.22.11",
     "@types/restify": "^7.2.10",
     "botbuilder": "^4.4.0",
     "botbuilder-ai": "^4.4.0",
     "botframework-config": "^4.4.0",
+    "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.0.0",
     "restify": "^8.3.2",
     "typescript": "^3.4.5"
