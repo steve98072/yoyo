@@ -18,6 +18,16 @@
             "endpointKey": "6d68f379-837d-44f4-8ab2-988d3f370a30",
             "hostname": "https://jingzhuqna.azurewebsites.net/qnamaker",
             "id": "86"
+        },
+        {
+            "type": "luis",
+            "id": "21024841-0b73-418a-bb8a-1d199fbff7fa",
+            "name": "edui2018-test",
+            "version": "0.1",
+            "appId": "6d36acc6-a9fe-4767-9a60-c649f3376629",
+            "authoringKey": "68427f0343fb4a509b0aa53ec6905896",
+            "subscriptionKey": "6d6a97cfaf76410fbb04b3dc377aa6d8",
+            "region": "westus"
         }
     ],
     "padlock": "",
