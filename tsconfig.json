@@ -12,6 +12,7 @@
     "files": [
         "./lib/cards.ts",
         "./lib/parser.ts",
+        "./lib/proactive.ts",
         "./lib/types.ts",
         "./lib/app.ts",
         "./lib/bot.ts"
